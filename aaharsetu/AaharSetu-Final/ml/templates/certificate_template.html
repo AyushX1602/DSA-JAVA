@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Certificate of Appreciation</title>
+  <style>
+    body {
+      font-family: 'Times New Roman', serif;
+      text-align: center;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 50px;
+    }
+    .certificate {
+      border: 10px solid #c0a080;
+      padding: 50px;
+      width: 800px;
+      height: 600px;
+      margin: auto;
+      box-sizing: border-box;
+      background-color: #fff;
+    }
+    .title {
+      font-size: 36px;
+      font-weight: bold;
+      color: #704214;
+      text-transform: uppercase;
+      margin: 0;
+      padding: 0;
+    }
+    .subtitle {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+    .description {
+      margin-top: 30px;
+      font-size: 18px;
+      line-height: 1.6;
+      padding: 0 20px;
+    }
+    .signatures {
+      margin-top: 60px;
+      display: flex;
+      justify-content: center;
+    }
+    .signature-block {
+      text-align: center;
+    }
+    .gov-seal {
+      display: block;
+      margin: 0 auto;
+      width: 100px;
+      opacity: 0.95;
+    }
+    .signature-name {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+    .signature-title {
+      font-size: 14px;
+      margin-top: 5px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <div class="certificate">
+    <h2 class="title">Certificate of Appreciation</h2>
+    <p class="subtitle">This certificate is presented to:</p>
+    <p style="font-size: 28px; font-style: italic; margin-top: 20px; font-weight: bold;">
+      {{ recipient_name }}
+    </p>
+    <p class="description">
+      This certificate is proudly presented in recognition of exceptional generosity 
+      and unwavering volunteer spirit. The selfless donation has not only advanced 
+      our mission but also inspired hope and positive change within our community. 
+      We are deeply grateful for the commitment to making a difference.
+      <br><br>
+      Thank you for being a beacon of compassion and support.
+    </p>
+    <div class="signatures">
+      <div class="signature-block">
+       
+        <div class="signature-name">Department of Food and Public Distribution</div>
+        <div class="signature-title">[Official Government Seal/Signature]</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

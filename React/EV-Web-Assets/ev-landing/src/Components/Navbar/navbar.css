@@ -1,0 +1,80 @@
+.navbar{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 30px 120px;
+  color: white;
+  position: relative;
+  z-index: 10;
+}
+
+.nav-logo{
+  font-family: "outfit", sans-serif;
+  font-weight: 600;
+  font-size: 42px;
+  background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  animation: logoGradient 3s ease-in-out infinite;
+}
+
+.nav-logo:hover{
+  transform: scale(1.1) rotate(2deg);
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+  animation-play-state: paused;
+}
+
+@keyframes logoGradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.nav-menu{
+    display: flex;
+    align-items: center;
+    list-style: none;
+    font-size: 18px;
+    gap: 60px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-menu li{
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 8px 15px;
+    border-radius: 20px;
+}
+
+.nav-menu li:hover{
+    background-color: rgba(255,255,255,0.1);
+    transform: translateY(-2px);
+}
+
+.nav-contact{
+    border-radius: 25px;
+    padding: 12px 35px;
+    background-color: #FFF;
+    color: #262626;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.nav-contact:hover{
+    background-color: #f8f8f8;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+}

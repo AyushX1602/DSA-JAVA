@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Database Management System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-graduation-cap"></i> Student Database Management System</h1>
+            <nav>
+                <button id="teacherBtn" class="nav-btn active">
+                    <i class="fas fa-chalkboard-teacher"></i> Teacher Portal
+                </button>
+                <button id="studentBtn" class="nav-btn">
+                    <i class="fas fa-user-graduate"></i> Student Portal
+                </button>
+            </nav>
+        </header>
+
+        <!-- Teacher Portal -->
+        <div id="teacherPortal" class="portal active">
+            <div class="portal-header">
+                <h2><i class="fas fa-chalkboard-teacher"></i> Teacher Portal</h2>
+                <p>Manage students and their marks</p>
+            </div>
+
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="students">
+                    <i class="fas fa-users"></i> Manage Students
+                </button>
+                <button class="tab-btn" data-tab="marks">
+                    <i class="fas fa-chart-line"></i> Manage Marks
+                </button>
+                <button class="tab-btn" data-tab="filter">
+                    <i class="fas fa-filter"></i> Filter & Analytics
+                </button>
+            </div>
+
+            <!-- Students Tab -->
+            <div id="studentsTab" class="tab-content active">
+                <div class="section">
+                    <h3><i class="fas fa-user-plus"></i> Add New Student</h3>
+                    <form id="addStudentForm" class="form-grid">
+                        <div class="form-group">
+                            <label for="rollNumber">Roll Number *</label>
+                            <input type="text" id="rollNumber" name="roll_number" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="firstName">First Name *</label>
+                            <input type="text" id="firstName" name="first_name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name *</label>
+                            <input type="text" id="lastName" name="last_name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="class">Class</label>
+                            <input type="text" id="class" name="class" placeholder="e.g., 10th">
+                        </div>
+                        <div class="form-group">
+                            <label for="section">Section</label>
+                            <input type="text" id="section" name="section" placeholder="e.g., A">
+                        </div>
+                        <div class="form-group full-width">
+                            <button type="submit" class="btn-primary">
+                                <i class="fas fa-plus"></i> Add Student
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="section">
+                    <h3><i class="fas fa-list"></i> Students List</h3>
+                    <div class="table-container">
+                        <table id="studentsTable">
+                            <thead>
+                                <tr>
+                                    <th>Roll Number</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Class</th>
+                                    <th>Section</th>
+                                    <th>Marks Entries</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="studentsTableBody">
+                                <!-- Students will be loaded here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Marks Tab -->
+            <div id="marksTab" class="tab-content">
+                <div class="section">
+                    <h3><i class="fas fa-plus-circle"></i> Add Marks</h3>
+                    <form id="addMarksForm" class="form-grid">
+                        <div class="form-group">
+                            <label for="studentSelect">Select Student *</label>
+                            <select id="studentSelect" name="student_id" required>
+                                <option value="">Select a student...</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="subjectSelect">Select Subject *</label>
+                            <select id="subjectSelect" name="subject_id" required>
+                                <option value="">Select a subject...</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="marksObtained">Marks Obtained *</label>
+                            <input type="number" id="marksObtained" name="marks_obtained" min="0" step="0.01" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="totalMarks">Total Marks</label>
+                            <input type="number" id="totalMarks" name="total_marks" value="100" min="1" step="0.01">
+                        </div>
+                        <div class="form-group">
+                            <label for="examType">Exam Type</label>
+                            <select id="examType" name="exam_type">
+                                <option value="Regular">Regular</option>
+                                <option value="Midterm">Midterm</option>
+                                <option value="Final">Final</option>
+                                <option value="Quiz">Quiz</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="examDate">Exam Date</label>
+                            <input type="date" id="examDate" name="exam_date">
+                        </div>
+                        <div class="form-group full-width">
+                            <button type="submit" class="btn-primary">
+                                <i class="fas fa-save"></i> Save Marks
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="section">
+                    <h3><i class="fas fa-search"></i> View Student Marks</h3>
+                    <div class="form-group">
+                        <label for="viewStudentSelect">Select Student to View Marks</label>
+                        <select id="viewStudentSelect">
+                            <option value="">Select a student...</option>
+                        </select>
+                    </div>
+                    <div id="studentMarksDisplay" class="marks-display">
+                        <!-- Marks will be displayed here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filter & Analytics Tab -->
+            <div id="filterTab" class="tab-content">
+                <div class="section">
+                    <h3><i class="fas fa-filter"></i> Filter Students</h3>
+                    <form id="filterForm" class="form-grid">
+                        <div class="form-group">
+                            <label for="filterMinMarks">Minimum Percentage</label>
+                            <input type="number" id="filterMinMarks" name="minMarks" min="0" max="100" step="0.1" placeholder="e.g., 50">
+                        </div>
+                        <div class="form-group">
+                            <label for="filterMaxMarks">Maximum Percentage</label>
+                            <input type="number" id="filterMaxMarks" name="maxMarks" min="0" max="100" step="0.1" placeholder="e.g., 100">
+                        </div>
+                        <div class="form-group">
+                            <label for="filterClass">Class</label>
+                            <input type="text" id="filterClass" name="class" placeholder="e.g., 10th">
+                        </div>
+                        <div class="form-group">
+                            <label for="filterSection">Section</label>
+                            <input type="text" id="filterSection" name="section" placeholder="e.g., A">
+                        </div>
+                        <div class="form-group">
+                            <label for="filterSubject">Subject</label>
+                            <select id="filterSubject" name="subject">
+                                <option value="">All Subjects</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="quickFilters">Quick Filters</label>
+                            <div class="quick-filters">
+                                <button type="button" class="filter-btn" data-filter="excellent">
+                                    <i class="fas fa-star"></i> Excellent (80%+)
+                                </button>
+                                <button type="button" class="filter-btn" data-filter="good">
+                                    <i class="fas fa-thumbs-up"></i> Good (60-79%)
+                                </button>
+                                <button type="button" class="filter-btn" data-filter="average">
+                                    <i class="fas fa-equals"></i> Average (40-59%)
+                                </button>
+                                <button type="button" class="filter-btn" data-filter="poor">
+                                    <i class="fas fa-exclamation-triangle"></i> Needs Help (<40%)
+                                </button>
+                            </div>
+                        </div>
+                        <div class="form-group full-width">
+                            <div class="filter-actions">
+                                <button type="submit" class="btn-primary">
+                                    <i class="fas fa-search"></i> Apply Filters
+                                </button>
+                                <button type="button" id="clearFilters" class="btn-secondary">
+                                    <i class="fas fa-times"></i> Clear All
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="section">
+                    <h3><i class="fas fa-chart-bar"></i> Performance Statistics</h3>
+                    <div id="performanceStats" class="stats-grid">
+                        <!-- Stats will be loaded here -->
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3><i class="fas fa-list"></i> Filtered Results</h3>
+                    <div id="filterResults">
+                        <p class="info">Apply filters above to see results</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Student Portal -->
+        <div id="studentPortal" class="portal">
+            <div class="portal-header">
+                <h2><i class="fas fa-user-graduate"></i> Student Portal</h2>
+                <p>View your marks by entering your roll number</p>
+            </div>
+
+            <div class="section">
+                <h3><i class="fas fa-search"></i> Search Your Marks</h3>
+                <form id="studentSearchForm" class="search-form">
+                    <div class="form-group">
+                        <label for="studentRollNumber">Enter Your Roll Number</label>
+                        <input type="text" id="studentRollNumber" placeholder="e.g., 2024001" required>
+                    </div>
+                    <button type="submit" class="btn-primary">
+                        <i class="fas fa-search"></i> Search
+                    </button>
+                </form>
+            </div>
+
+            <div id="studentResults" class="section" style="display: none;">
+                <h3><i class="fas fa-user"></i> Student Information</h3>
+                <div id="studentInfo" class="student-info">
+                    <!-- Student info will be displayed here -->
+                </div>
+
+                <h3><i class="fas fa-chart-bar"></i> Your Marks</h3>
+                <div id="studentMarks" class="marks-grid">
+                    <!-- Student marks will be displayed here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Edit Student Modal -->
+        <div id="editModal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3><i class="fas fa-edit"></i> Edit Student</h3>
+                    <button id="closeModal" class="close-btn">×</button>
+                </div>
+                <form id="editStudentForm" class="form-grid">
+                    <input type="hidden" id="editStudentId">
+                    <div class="form-group">
+                        <label for="editRollNumber">Roll Number *</label>
+                        <input type="text" id="editRollNumber" name="roll_number" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editFirstName">First Name *</label>
+                        <input type="text" id="editFirstName" name="first_name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editLastName">Last Name *</label>
+                        <input type="text" id="editLastName" name="last_name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editEmail">Email</label>
+                        <input type="email" id="editEmail" name="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="editPhone">Phone</label>
+                        <input type="tel" id="editPhone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="editClass">Class</label>
+                        <input type="text" id="editClass" name="class" placeholder="e.g., 10th">
+                    </div>
+                    <div class="form-group">
+                        <label for="editSection">Section</label>
+                        <input type="text" id="editSection" name="section" placeholder="e.g., A">
+                    </div>
+                    <div class="form-group full-width">
+                        <div class="modal-buttons">
+                            <button type="button" id="cancelEdit" class="btn-secondary">
+                                <i class="fas fa-times"></i> Cancel
+                            </button>
+                            <button type="submit" class="btn-primary">
+                                <i class="fas fa-save"></i> Update Student
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Loading and Messages -->
+        <div id="loading" class="loading" style="display: none;">
+            <i class="fas fa-spinner fa-spin"></i> Loading...
+        </div>
+
+        <div id="message" class="message" style="display: none;">
+            <span id="messageText"></span>
+            <button id="closeMessage" class="close-btn">×</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

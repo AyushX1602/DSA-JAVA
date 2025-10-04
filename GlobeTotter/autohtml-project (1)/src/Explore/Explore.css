@@ -1,0 +1,13 @@
+.explore,
+.explore * {
+  box-sizing: border-box;
+}
+.explore {
+  color: #b071ff;
+  text-align: left;
+  font-family: "Poppins-Bold", sans-serif;
+  font-size: 360px;
+  font-weight: 700;
+  position: relative;
+  height: 384px;
+}

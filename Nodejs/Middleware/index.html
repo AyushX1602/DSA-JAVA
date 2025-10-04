@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+</head>
+<body>
+    <h1>Hello World</h1>
+    <div id ="ports"></div>
+        <script>
+                async function displayrecent(){
+                    console.log("Before sending request");
+                    // const responce = await fetch('https://jsonplaceholder.typicode.com/posts/1')
+                    // const data = await responce.json();
+
+                    const response = await axios.get("https://jsonplaceholder.typicode.com/posts/1")
+                    console.log(response.data);
+
+                    console.log("request has been processed")
+                    document.getElementById("ports").innerHTML= response.data.title
+                    
+                }
+                displayrecent();
+        </script>
+</body>
+</html>

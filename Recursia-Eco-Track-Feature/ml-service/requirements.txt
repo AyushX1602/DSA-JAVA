@@ -1,0 +1,31 @@
+# PyTorch with CUDA 12.4
+torch>=2.1.0
+torchvision>=0.16.0
+torchaudio>=2.1.0
+
+# GPU support (make sure you installed the correct pytorch-cuda version)
+# For conda users: conda install pytorch pytorch-cuda=12.4 -c pytorch -c nvidia
+
+# Data manipulation & scientific computing
+numpy>=1.24.0
+pandas>=2.1.0
+
+# Image handling
+Pillow>=10.0.0
+
+# Machine learning metrics
+scikit-learn>=1.3.0
+
+# Plotting
+matplotlib>=3.8.0
+seaborn>=0.12.2
+
+# Optional: progress bars
+tqdm>=4.66.0
+
+# Flask API dependencies
+Flask>=3.0.0
+flask-cors>=4.0.0
+
+# Additional utilities for API
+Werkzeug>=3.0.0

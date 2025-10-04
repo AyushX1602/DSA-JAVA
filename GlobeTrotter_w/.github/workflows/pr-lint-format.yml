@@ -1,0 +1,71 @@
+name: PR Lint and Prettier
+
+on:
+  pull_request:
+    branches: ["main"]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pr-lint-format-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  client:
+    name: Client ESLint + Prettier
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: client
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+          cache-dependency-path: client/pnpm-lock.yaml
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Versions
+        run: |
+          node -v
+          pnpm -v
+          pnpm exec eslint -v
+          pnpm exec prettier -v
+      - name: Lint
+        run: pnpm exec eslint . --max-warnings=0
+      - name: Prettier check
+        run: pnpm exec prettier --check "src/**/*.{js,jsx,ts,tsx,css,md,json}"
+
+  server:
+    name: Server ESLint + Prettier
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: server
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+          cache-dependency-path: server/pnpm-lock.yaml
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Versions
+        run: |
+          node -v
+          pnpm -v
+          pnpm exec eslint -v
+          pnpm exec prettier -v
+      - name: Lint
+        run: pnpm exec eslint "{src,apps,libs,test}/**/*.ts" --max-warnings=0
+      - name: Prettier check
+        run: pnpm exec prettier --check "src/**/*.ts" "test/**/*.ts"

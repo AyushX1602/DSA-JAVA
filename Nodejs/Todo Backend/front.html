@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen py-8">
+    <div class="max-w-md mx-auto bg-white rounded-lg shadow-md p-6">
+        <h1 class="text-2xl font-bold text-center mb-6 text-gray-800">Todo List</h1>
+        
+        <!-- Add Todo Form -->
+        <div class="mb-6">
+            <input 
+                type="text" 
+                id="todoInput" 
+                placeholder="Enter a new todo..." 
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+            <button 
+                onclick="addTodo()" 
+                class="w-full mt-2 bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-200"
+            >
+                Add Todo
+            </button>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="mb-6 flex gap-2">
+            <button onclick="deleteFirst()" class="bg-red-500 text-white px-3 py-1 rounded text-sm hover:bg-red-600">Delete First</button>
+            <button onclick="deleteLast()" class="bg-red-500 text-white px-3 py-1 rounded text-sm hover:bg-red-600">Delete Last</button>
+        </div>
+
+        <!-- Todo List -->
+        <div id="todoList" class="space-y-2">
+            <!-- Todos will be rendered here -->
+        </div>
+    </div>
+
+<script>
+let todos = [];
+
+// Load todos when page loads
+window.onload = function() {
+    loadTodos();
+};
+
+// Load todos from backend
+async function loadTodos() {
+    try {
+        const response = await fetch('http://localhost:3000/api/todos');
+        const data = await response.json();
+        todos = data.todos;
+        render();
+    } catch (error) {
+        console.error('Error loading todos:', error);
+    }
+}
+
+// Add todo to backend
+async function addTodo() {
+    const input = document.getElementById('todoInput');
+    const title = input.value.trim();
+    
+    if (title === '') {
+        alert('Please enter a todo title');
+        return;
+    }
+
+    try {
+        const response = await fetch('http://localhost:3000/api/todos', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ title: title })
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        
+        console.log('Todo added:', data.todo);
+        input.value = '';
+        loadTodos(); // Reload todos from backend
+        
+    } catch (error) {
+        console.error('Error adding todo:', error);
+        alert('Error adding todo: ' + error.message);
+    }
+}
+
+// Delete todo from backend
+async function deleteTodo(id) {
+    try {
+        const response = await fetch(`http://localhost:3000/api/todos/${id}`, {
+            method: 'DELETE'
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        
+        console.log('Todo deleted:', data.message);
+        loadTodos(); // Reload todos from backend
+    } catch (error) {
+        console.error('Error deleting todo:', error);
+        alert('Error deleting todo: ' + error.message);
+    }
+}
+
+function deleteFirst() {
+    if (todos.length > 0) {
+        deleteTodo(todos[0].id);
+    }
+}
+
+function deleteLast() {
+    if (todos.length > 0) {
+        deleteTodo(todos[todos.length - 1].id);
+    }
+}
+
+function render() {
+    const todoList = document.getElementById('todoList');
+    todoList.innerHTML = '';
+
+    if (todos.length === 0) {
+        todoList.innerHTML = '<p class="text-gray-500 text-center">No todos yet. Add one above!</p>';
+        return;
+    }
+
+    todos.forEach((todo, index) => {
+        const todoElement = document.createElement('div');
+        todoElement.className = 'flex items-center justify-between bg-gray-50 p-3 rounded-lg border';
+        
+        todoElement.innerHTML = `
+            <div>
+                <span class="text-gray-800">${todo.title}</span>
+                <small class="block text-gray-500">ID: ${todo.id}</small>
+                <small class="block text-gray-400">${new Date(todo.createdAt).toLocaleString()}</small>
+            </div>
+            <button 
+                onclick="deleteTodo(${todo.id})" 
+                class="bg-red-500 text-white px-3 py-1 rounded text-sm hover:bg-red-600 transition duration-200"
+            >
+                Delete
+            </button>
+        `;
+        
+        todoList.appendChild(todoElement);
+    });
+}
+</script>
+</body>
+</html>

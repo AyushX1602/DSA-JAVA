@@ -1,0 +1,66 @@
+.cards-key-features-features-discount-active-off,
+.cards-key-features-features-discount-active-off * {
+  box-sizing: border-box;
+}
+.cards-key-features-features-discount-active-off {
+  background: #ffffff;
+  border-radius: 30px;
+  padding: 30px;
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+}
+.cards-key-features-features-discount-active-off .frame-54 {
+  border-radius: 30px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 100px;
+  height: 100px;
+  position: relative;
+  overflow: visible;
+}
+.cards-key-features-features-discount-active-off .frame-59 {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.cards-key-features-features-discount-active-off .big-discount {
+  color: var(--black, #1c1c1c);
+  text-align: left;
+  font-family: "PlusJakartaSans-Bold", sans-serif;
+  font-size: 24px;
+  line-height: 30px;
+  font-weight: 700;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.cards-key-features-features-discount-active-off
+  .get-discount-for-every-services {
+  color: #a8a8a8;
+  text-align: left;
+  font-family: var(
+    --medium-type18-font-family,
+    "PlusJakartaSans-Medium",
+    sans-serif
+  );
+  font-size: var(--medium-type18-font-size, 18px);
+  line-height: var(--medium-type18-line-height, 30px);
+  font-weight: var(--medium-type18-font-weight, 500);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}

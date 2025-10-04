@@ -1,0 +1,79 @@
+.cards-services-services-flexible-booking-active-off,
+.cards-services-services-flexible-booking-active-off * {
+  box-sizing: border-box;
+}
+.cards-services-services-flexible-booking-active-off {
+  background: #ffffff;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 67px;
+  align-items: center;
+  justify-content: center;
+  height: 450px;
+  position: relative;
+}
+.cards-services-services-flexible-booking-active-off .group-3 {
+  flex-shrink: 0;
+  width: 70px;
+  height: 70px;
+  position: static;
+}
+.cards-services-services-flexible-booking-active-off .ellipse-2 {
+  background: #ededed;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  position: absolute;
+  left: 140px;
+  top: 79px;
+}
+.cards-services-services-flexible-booking-active-off .group {
+  width: 12%;
+  height: 12.89%;
+  position: absolute;
+  right: 44%;
+  left: 44%;
+  bottom: 68.22%;
+  top: 18.89%;
+  overflow: visible;
+}
+.cards-services-services-flexible-booking-active-off .frame-15 {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.cards-services-services-flexible-booking-active-off .flexible-booking {
+  color: var(--black, #1c1c1c);
+  text-align: left;
+  font-family: var(
+    --semibold-type28-font-family,
+    "PlusJakartaSans-SemiBold",
+    sans-serif
+  );
+  font-size: var(--semibold-type28-font-size, 28px);
+  font-weight: var(--semibold-type28-font-weight, 600);
+  position: relative;
+}
+.cards-services-services-flexible-booking-active-off
+  .from-flights-stays-to-sights-just-count-on-our-complete-products {
+  color: #a8a8a8;
+  text-align: center;
+  font-family: var(
+    --medium-type18-font-family,
+    "PlusJakartaSans-Medium",
+    sans-serif
+  );
+  font-size: var(--medium-type18-font-size, 18px);
+  line-height: var(--medium-type18-line-height, 30px);
+  font-weight: var(--medium-type18-font-weight, 500);
+  position: relative;
+  width: 254px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

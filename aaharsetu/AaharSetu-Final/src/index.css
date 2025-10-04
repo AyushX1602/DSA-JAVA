@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+      --background: 0 0% 100%;
+      --foreground: 0 0% 3.9%;
+    }
+  
+    body {
+      @apply bg-neutral-50 text-neutral-900 antialiased;
+    }
+  }
+  
+  .glass-card {
+    @apply bg-white/50 backdrop-blur-lg border border-white/20 shadow-lg;
+  }
+
+  .gradient {
+    @apply absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-[#010249] to-[#1CAFDB] rounded-t-lg z-10;
+  }

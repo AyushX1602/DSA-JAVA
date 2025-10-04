@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<h1>TODO List</h1>
+<!-- <div id="todo"><div> -->
+
+<input type="text" placeholder ="Add a new task">
+<button onclick="addTodo()">Add</button>
+<button onclick="deleteFirst()">Delete first element</button>
+<button onclick="deleteLast()">Delete Last Element</button>
+<div id="todos"><div>
+</div>
+
+<script>
+    // let ctr=0;
+//     function addTodo(){
+//         const inputEl= document.querySelector("input");
+//         const value =inputEl.value;
+//         ctr=ctr+1;
+//         const newDivEl=document.createElement("div");
+//         newDivEl.id="todo-"+ctr;
+//         newDivEl.innerHTML="<div>"+value+"</div><button onclick='deletetodo(" +ctr+ ")'>delete</button>";
+//         document.body.appendChild(newDivEl);
+        
+//     }
+
+//     function deletetodo(index) {
+//     const element= document.getElementById("todo-"+index);
+//     element.parentNode.removeChild(element);
+// }
+
+
+    // let ctr=0
+    //     function callback(){
+    //         console.log(ctr);
+    //         ctr=ctr+1;
+           
+    //         document.querySelectorAll("h4")[1].innerHTML = ctr;
+    //     }
+    // setInterval(callback,1000);
+
+let todos=[];
+function addTodo(){
+    todos.push({
+        title: document.querySelector("input").value
+    })
+    render ();
+}
+ function deleteTodo(index){
+   todos.splice(index,1)
+render ();
+ }
+
+
+function deleteFirst(){
+    todos.splice(0,1)
+    render();
+} 
+
+ function deleteLast(){
+    todos.pop({
+        title:document.querySelector("input").value
+    })
+    render();
+ }
+
+function render(){
+    document.querySelector("#todos").innerHTML="";
+    for(let i=0;i< todos.length;i++){
+        const todo =todos[i];
+        const div =document.createElement("div");
+        const h1= document.createElement("h1");
+        const button  =document.createElement("button");
+        button.innerHTML="Delete";
+        button.onclick=()=> deleteTodo(i);
+        h1.innerHTML= todo.title;
+        div.append(h1);
+        div.append(button);
+        document.querySelector('#todos').appendChild(div)
+    }
+}
+</script>
+</body>
+</html> 
+
+
+
+
+
+
+
+

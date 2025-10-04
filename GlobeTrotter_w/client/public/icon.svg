@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-labelledby="title desc">
+  <title id="title">Travel Planner Icon - Solid Pink</title>
+  <desc id="desc">A simplified pink location pin with a white paper plane for small sizes.</desc>
+
+  <!-- Solid pink location pin -->
+  <path fill="#ec4899"
+        d="M60 6c-20.435 0-37 16.565-37 37 0 26.5 37 59 37 59s37-32.5 37-59c0-20.435-16.565-37-37-37zm0 52a15 15 0 1 1 0-30 15 15 0 0 1 0 30z"/>
+  
+  <!-- White dashed route arc -->
+  <path d="M30 78c8-8 19-13 30-13 11 0 22 5 30 13"
+        fill="none" stroke="#ffffff" stroke-width="4"
+        stroke-dasharray="6 6" stroke-linecap="round"/>
+
+  <!-- White paper plane with solid pink tail -->
+  <g transform="translate(60,43) rotate(-12)">
+    <path d="M-18 -6 L18 0 L-18 6 L-10 2 L-3 0 L-10 -2 Z" fill="#ffffff"/>
+    <path d="M-10 -2 L-3 0 L-10 2 Z" fill="#ec4899"/>
+  </g>
+</svg>

@@ -1,0 +1,21 @@
+
+
+<head>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+
+    <script>
+        function sendrequest(){
+            axios.post('http://localhost:3000/sum',{
+                a:document.getElementById('a').value,
+                b:document.getElementById('b').value
+            })
+        }
+    </script>
+</head>
+<body>
+    <input id="a" type="text" placeholder="Enter a number">
+    <input id="b" type="text" placeholder="Enter b number">
+
+    <button onclick="sendrequest()">Find Sum</button>
+</body>
