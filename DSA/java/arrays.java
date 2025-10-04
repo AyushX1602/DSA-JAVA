@@ -70,8 +70,68 @@ public class arrays {
 
 
 
-        
+        // Two sum 
+// Scanner sc = new Scanner(System.in);
+// int target = sc.nextInt();
+// int[] arr = {2, 7, 11, 15}; 
 
-    }
-}
- 
+//         int n = arr.length;
+//         for(int i = 0; i < n; i++){
+//             for(int j = i + 1; j < n; j++){
+//                 if(arr[i] + arr[j] == target){
+//                     System.out.println("Indices: " + i + ", " + j);
+//                     return;
+//                 }
+//             }
+//         }
+//         System.out.println("No solution found");
+
+
+        //Secound largest element in an array
+
+
+    //     int[] arr = {5, 3, 8, 1, 4, 7};
+    //     int n = arr.length;
+    //  //max element
+    //     int max = arr[0];
+    //     for(int i= 0; i<n; i++){
+    //         if(arr[i] > max){
+    //             max = arr[i];
+    //         }
+    //     }
+    //     System.out.println("Maximum element: " + max);
+    //     //second max element
+    //     int secondMax = Integer.MIN_VALUE;
+    //     for(int i= 0; i<n; i++){
+    //         if(arr[i] > secondMax && arr[i] < max){
+    //             secondMax = arr[i];
+    //         }
+    //     }
+    //     System.out.println("Second maximum element: " + secondMax);
+            // OR
+
+            int[] arr = {5, 5, 8, 1, 4, 7};
+            int max =   Integer.MIN_VALUE;
+            int secondMax = Integer.MIN_VALUE;
+            //max
+            for (int i = 0; i < arr.length; i++){
+                if(arr[i]>max) max= arr[i];
+            }
+            //second max
+            for(int i=0; i<arr.length; i++){
+                if(arr[i]>secondMax && arr[i]<max) secondMax= arr[i];
+            }
+            System.out.println("Second maximum element: " + secondMax);
+
+
+
+
+
+            }
+        }
+
+
+
+
+
+

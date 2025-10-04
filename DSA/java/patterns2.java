@@ -449,23 +449,19 @@ public class patterns2 {
 //    }
 
 
-// Number spiral 
+// // Number spiral 
 
-Scanner sc = new Scanner(System.in);
-int n = sc.nextInt();
+// Scanner sc = new Scanner(System.in);
+// int n = sc.nextInt();
 
-for(int i =1; i<=n; i++){
-    for(int j=1;j<=n;j++){
-        System.out.print(Math.min(i, j)+" ");
-    }
-    System.out.println();
-}
-
-
+// for(int i =1; i<=n; i++){
+//     for(int j=1;j<=n;j++){
+//         System.out.print(Math.min(i, j)+" ");
+//     }
+//     System.out.println();
+// }
 
 
-
-
-}
+   }
 }
 
