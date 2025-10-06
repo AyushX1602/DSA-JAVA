@@ -110,28 +110,43 @@ public class arrays {
     //     System.out.println("Second maximum element: " + secondMax);
             // OR
 
-            int[] arr = {5, 5, 8, 1, 4, 7};
-            int max =   Integer.MIN_VALUE;
-            int secondMax = Integer.MIN_VALUE;
-            //max
-            for (int i = 0; i < arr.length; i++){
-                if(arr[i]>max) max= arr[i];
+            // int[] arr = {5, 5, 8, 1, 4, 7};
+            // int max =   Integer.MIN_VALUE;
+            // int secondMax = Integer.MIN_VALUE;
+            // //max
+            // for (int i = 0; i < arr.length; i++){
+            //     if(arr[i]>max) max= arr[i];
+            // }
+            // //second max
+            // for(int i=0; i<arr.length; i++){
+            //     if(arr[i]>secondMax && arr[i]<max) secondMax= arr[i];
+            // }
+            // System.out.println("Second maximum element: " + secondMax);
+
+
+            //Reverse an array
+            int[] reversedArr = {1, 2, 3, 4, 5};
+            int n = reversedArr.length;
+            int i = 0, j = n - 1;
+            while (i < j) {
+                int temp = reversedArr[i];
+                reversedArr[i] = reversedArr[j];
+                reversedArr[j] = temp;
+                i++;
+                j--;
             }
-            //second max
-            for(int i=0; i<arr.length; i++){
-                if(arr[i]>secondMax && arr[i]<max) secondMax= arr[i];
+            for (int element : reversedArr) {
+                System.out.print(element + " ");
             }
-            System.out.println("Second maximum element: " + secondMax);
 
 
 
 
 
-            }
+
+
+
+
+
         }
-
-
-
-
-
-
+    }
