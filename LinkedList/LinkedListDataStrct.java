@@ -6,9 +6,10 @@ class Node {
     }
 }
 
-class LinkedList { //user defined data strcuture
+class LinkedList {
     Node head;
     Node tail;
+    int size ;
 
     int Search (int val){
         if(head == null) return -1;
@@ -28,6 +29,7 @@ class LinkedList { //user defined data strcuture
             tail.next = temp;
             tail = temp;
         }
+        size++; // keep count in sync
     }
 
     void addAtHead(int val) {
@@ -37,11 +39,13 @@ class LinkedList { //user defined data strcuture
             temp.next = head;
             head = temp;
         }
+        size++;
     }
     void deleteAtHead() {
         if(head == null) return;
         head = head.next;
         if(head == null) tail = null;
+        size--;
     }
 
     void display() {
@@ -55,12 +59,7 @@ class LinkedList { //user defined data strcuture
     }
 
     void Instert(int val, int idx) {
-        Node temp = head;
-        int size = 0;
-        while(temp != null) {
-            size++;
-            temp = temp.next;
-        }
+
         if(idx < 0|| idx > size){ 
             System.out.println("Invalid Index");
             return ;
@@ -68,7 +67,7 @@ class LinkedList { //user defined data strcuture
         if(idx == 0) addAtHead(val);
         else if(idx == size) addAtTail(val);
         else {
-            temp = head;
+            Node temp = head;
             for(int i=0;i<idx-1;i++) temp = temp.next;
             Node newNode = new Node(val);
             newNode.next = temp.next;
@@ -78,9 +77,30 @@ class LinkedList { //user defined data strcuture
 
     }
 
+    int get(int idx) {
+        Node temp = head; 
+        for(int i=0;i<idx;i++){
+            temp = temp.next;
+        }
+        return temp.val;
+    }
+
+    void delete(int idx) {
+        if (head == null || idx < 0 || idx >= size) {
+            System.out.println("Invalid Index");
+            return;
+        }
+        if (idx == 0) {
+            deleteAtHead();
+            return;
+        }
+        Node temp = head;
+        for (int i = 0; i < idx - 1; i++) temp = temp.next;
+        temp.next = temp.next.next;
+        if (idx == size - 1) tail = temp;
+        size--;
+    }
 }
-
-
 
 public class LinkedListDataStrct {
 
@@ -95,9 +115,12 @@ public class LinkedListDataStrct {
          ll.display();
          ll.deleteAtHead();
          ll.display();
-        System.out.println(ll.Search(30));
-            ll.Instert(25, 2);
-            ll.display();
+         System.out.println(ll.Search(30));
+         ll.Instert(25, 2);
+         ll.display();
+         System.out.println(ll.get(2));
+         ll.delete(2);
+         ll.display();
     }
 }
 
