@@ -55,12 +55,65 @@ class DLL{
         else head = null;
     }
 
+    void insert(int idx,int val){
 
+        if(idx<0 || idx>size) return;
+        if(idx == 0) {insertAtHead(val);
+            return;
+        }
+        if(idx == size) {insertAtTail(val);
+            return;
+        }
+        ListNode a = new ListNode(val);
+        ListNode temp = head;
+        for(int i=0;i<idx-1;i++){
+            temp = temp.next;
+        }
+        ListNode b = temp.next;
+        temp.next = a;
+        a.prev = temp;
+        a.next = b; 
+        b.prev = a;
+        size++;
+    }
+
+
+
+    void delete(int idx){
+        if(idx<0 || idx>=size) return;
+        if(idx == 0) {deleteAtHead();
+            return;
+        }
+        if(idx == size-1) {deleteAtTail();
+            return;
+        }
+
+        ListNode temp = head;
+        for(int i=0;i<idx-1;i++){
+            temp = temp.next;
+        }
+        ListNode b = temp.next;
+        temp.next = b.next;
+        b.next.prev = temp;
+        size--;
+
+    }
 }
 
 
 public class DoublyLLclass {
     public static void main(String[] args) {
         DLL list = new DLL();
+        list.insertAtHead(10);
+        list.insertAtHead(20);  
+        list.insertAtTail(30);
+        list.insertAtTail(40);
+        list.insert(2,25);
+        list.display();
+        list.deleteAtHead();
+        list.deleteAtTail();
+        list.delete(1);
+        list.display();
+        
     }
 }
